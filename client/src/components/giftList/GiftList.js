@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import apiGiphy from "../../services/apiGiphy";
+import apiGiphy from "../../servicesExt/apiGiphy";
 import GiftCard from "../giftCard/GiftCard";
 
 const GiftList = ({keyword}) => {
@@ -19,7 +19,7 @@ const GiftList = ({keyword}) => {
     });
   }, [keyword]);
   return (
-    <section className="row">
+    <section className="row justify-content-center">
       {gifs
         ? gifs.map((singleGift) => {
             return (

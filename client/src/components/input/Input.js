@@ -13,9 +13,9 @@ const Input = ({keywordSeacrh}) => {
   };
 
   return (
-    <div className="input-group mb-3">
+    <div className="input-group mb-3 mt-5 pt-4 w-50 m-auto">
       <div className="input-group-prepend">
-        <button className="btn btn-outline-secondary" type="submit" onClick={handleSubmitKeyword}>
+        <button className="btn btn-warning " type="submit" onClick={handleSubmitKeyword}>
           Seacrh
         </button>
       </div>
