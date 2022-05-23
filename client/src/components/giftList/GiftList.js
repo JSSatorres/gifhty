@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import apiGiphy from "../../services/apiGiphy";
 import GiftCard from "../giftCard/GiftCard";
 
-const GiftList = () => {
+const GiftList = ({keyword}) => {
   const [gifs, setGifs] = useState();
 
+  // useEffect(() => {
+  //   apiGiphy("rick").then((apiGifts) => {
+  //     console.log(apiGifts);
+  //     setGifs(apiGifts);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    apiGiphy("rick").then((apiGifts) => {
+    apiGiphy(keyword).then((apiGifts) => {
       console.log(apiGifts);
       setGifs(apiGifts);
     });
-  }, []);
+  }, [keyword]);
   return (
-    <section>
+    <section className="row">
       {gifs
         ? gifs.map((singleGift) => {
             return (

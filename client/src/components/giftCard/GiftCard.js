@@ -1,10 +1,12 @@
 import React from "react";
 
-function GiftCard({title, id, url}) {
+function GiftCard({ title, id, url }) {
   return (
-    <div key={id}>
-      <h5> {title}</h5>
-      <img src={url} alt={title} />
+    <div className="card text-white bg-dark mb-3 col-md-4" key={id}>
+      <div className="card-header">{title}</div>
+      <div className="card-body">
+        <img src={url} alt={title} />
+      </div>
     </div>
   );
 }

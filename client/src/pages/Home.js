@@ -1,13 +1,21 @@
-import React from 'react'
-import GiftList from '../components/giftList'
+import React, { useState } from "react";
+import GiftList from "../components/giftList";
+import Input from "../components/input";
 
 const Home = () => {
+  const [keyword, setKeyword] = useState();
+
+  function keywordSeacrh(newKeyword) {
+    setKeyword(newKeyword)
+    console.log("la nueva keyword es",newKeyword);
+  }
+
   return (
     <>
-       <button className="btn btn-primary"> ostia</button>
-    <GiftList/>
+      <Input keywordSeacrh={keywordSeacrh} />
+      <GiftList keyword={keyword} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
