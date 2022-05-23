@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-const GiftSchema = new Schema(
+const coasterSchema = new Schema(
   {
-    title: {
-      type: String,
-      trim: true,
+    
+        title:String,
+      description: String,
     },
     //   image: {
     //     url: String,
@@ -16,8 +16,8 @@ const GiftSchema = new Schema(
     //     type: [{ type: Schema.Types.ObjectId, ref: "users" }],
     //     default: [],
     //   },
-  },
+  
   { timestamps: true }
 );
 
-export const GiftDB = new model("gift", GiftSchema);
+export const Coaster = new model("coaster", coasterSchema);

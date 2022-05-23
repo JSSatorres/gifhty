@@ -1,14 +1,14 @@
-// import { Gifts } from "../models/gift-models.js";
+import mongoose from "mongoose";
+import { GiftDB } from "../models/gift-models.js";
 
 // import { uploadImagePlaylistCloud } from "../libs/cloudinary.js";
 
 export async function getGifts(req, res, next) {
   try {
-    // const gifts = await Gifts.find().lean().exec();
-    // console.log(">>>>>>>>>getss ",gifts);
+    const gifts = await GiftDB.find().lean().exec();
+    console.log(">>>>>>>>>getss ",gifts);
     res.status(200).send({
-      // data: gifts,
-      data: "gifts",
+      data: gifts,
     });
   } catch (error) {
     next(error);
@@ -30,12 +30,13 @@ export async function getGift(req, res, next) {
   }
 }
 
-export async function createGift(req, res, next) {
-  // const { title } = req.body;
+export async function createGift(req, res) {
+
+const { title } = req.body;
   try {
-    // const newPlaylist = await Playlists.create({
-    //   title: title,
-    // });
+    const newGifts = await GiftDB.create({
+      title: title,
+    });
     res.status(200).send({
       message: "OK create",
     });
