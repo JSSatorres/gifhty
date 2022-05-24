@@ -15,6 +15,7 @@ function App() {
       <Route path="/upload" element={<Upload />} />
       <Route path="/mygifts" element={<MyGifts />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/editgift" element={<NotFound />} />
       {/* <Route index element={<Home />} /> */}
       {/* <Route path="teams" element={<Teams />}>
           <Route path=":teamId" element={<Team />} />

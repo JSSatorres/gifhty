@@ -24,7 +24,7 @@ export const giftApi = createApi({
     }),
     createGift: builder.mutation({
       query: (body) => ({
-        url: `/gifts`,
+        url: `/gift`,
         method: "POST",
         body,
       }),

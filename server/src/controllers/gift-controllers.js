@@ -6,7 +6,7 @@ import { GiftDB } from "../models/gift-models.js";
 export async function getGifts(req, res, next) {
   try {
     const gifts = await GiftDB.find().lean().exec();
-    console.log(">>>>>>>>>getss ",gifts);
+    console.log(">>>>>>>>>getss ", gifts);
     res.status(200).send({
       data: gifts,
     });
@@ -31,11 +31,12 @@ export async function getGift(req, res, next) {
 }
 
 export async function createGift(req, res) {
-
-const { title } = req.body;
+  const { title, gift, user } = req.body;
   try {
     const newGifts = await GiftDB.create({
-      title: title,
+      title,
+      gift,
+      user,
     });
     res.status(200).send({
       message: "OK create",
@@ -76,7 +77,7 @@ export async function removeGift(req, res, next) {
     const gitsRemove = await GiftDB.findByIdAndDelete(id, { new: true })
       .lean()
       .exec();
-console.log(id);
+    console.log(id);
     res.status(200).send({
       message: "OK delete",
     });

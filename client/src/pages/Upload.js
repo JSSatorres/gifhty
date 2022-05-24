@@ -1,11 +1,13 @@
 import { useState, useCallback } from "react";
 import { Formik, Form, Field } from "formik";
 import Navbar from "../components/navbar";
-import Dropzone from "dropzone";
 import { useDropzone } from "react-dropzone";
+import { useCreateGiftMutation } from "../services/giftApi";
 
 function Upload() {
   const [image, setImage] = useState([]);
+  const [createGift, createGifActionResponse] = useCreateGiftMutation();
+
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
@@ -22,7 +24,7 @@ function Upload() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".png", "gif"],
+      "image/*": [".jpeg", ".png", ".gif"],
     },
   });
 
@@ -36,11 +38,12 @@ function Upload() {
             gift: "",
             user: "",
           }}
-          
           onSubmit={(values, { setSubmitting }) => {
             // console.log(values);
             // setSubmitting(false);
-            alert(JSON.stringify(values));
+            // alert(JSON.stringify(values));
+            console.log(values);
+              createGift(values)
           }}
         >
           {({ isSubmitting }) => (

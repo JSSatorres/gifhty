@@ -2,22 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useGetGiftsQuery,
-  // useGetGiftQuery,
-  useCreateGiftMutation,
-  useDeleteGiftMutation,
-  useUpdateGiftMutation,
+  useDeleteGiftMutation
 } from "../../services/giftApi";
 
 const MyGigtList = () => {
   const navigate = useNavigate();
   const { data, isSuccess,refetch } = useGetGiftsQuery();
-  const [createGift, createGifActionResponse] = useCreateGiftMutation();
-  const [deleteGift, deleteGiftActionResponse] = useDeleteGiftMutation();
-  const [updateGift, updateGiftActionResponse] = useUpdateGiftMutation();
 
-  const handleGetAllUser = () => {
-    // dispatch(getAllUser());
-  };
+  const [deleteGift, deleteGiftActionResponse] = useDeleteGiftMutation();
 
   const handleDeleteOneUser = (id) => {
     deleteGift(id);
