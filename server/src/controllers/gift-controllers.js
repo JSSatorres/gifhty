@@ -51,7 +51,7 @@ export async function updateGift(req, res, next) {
   // const { uid } = req.user;
 
   try {
-    // const checkPlaylist = await Playlists.findById(playlistId);
+    // const checkPlaylist = await GiftDB.findById(playlistId);
     // if (!checkPlaylist.songs.includes(songId)) {
     //   await Playlists.findOneAndUpdate(
     //     { _id: playlistId },
@@ -70,17 +70,17 @@ export async function updateGift(req, res, next) {
   }
 }
 export async function removeGift(req, res, next) {
-  // const { id } = req.params;
+  const { id } = req.params;
 
   try {
-    // const playlistsRemove = await Playlists.findByIdAndDelete(id, { new: true })
-    //   .lean()
-    //   .exec();
-
+    const gitsRemove = await GiftDB.findByIdAndDelete(id, { new: true })
+      .lean()
+      .exec();
+console.log(id);
     res.status(200).send({
       message: "OK delete",
     });
   } catch (err) {
-    next(error);
+    next(err);
   }
 }

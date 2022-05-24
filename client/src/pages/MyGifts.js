@@ -1,11 +1,12 @@
 import React from "react";
+import MyGiftList from "../components/myGiftList";
 import Navbar from "../components/navbar";
 
 const MyGifts = () => {
   return (
     <div>
       <Navbar />
-      MyGifts
+      <MyGiftList />
     </div>
   );
 };

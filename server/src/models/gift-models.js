@@ -7,6 +7,14 @@ const GiftSchema = new Schema(
       type: String,
       trim: true,
     },
+    gift: {
+      type: String,
+      trim: true,
+    },
+    user: {
+      type: String,
+      trim: true,
+    },
     //   image: {
     //     url: String,
     //     public_id: String,
