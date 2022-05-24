@@ -15,11 +15,6 @@ const GiftSchema = new Schema(
       type: String,
       trim: true,
     },
-    //   image: {
-    //     url: String,
-    //     public_id: String,
-    //     trim: true,
-    //   },
     //   users: {
     //     type: [{ type: Schema.Types.ObjectId, ref: "users" }],
     //     default: [],

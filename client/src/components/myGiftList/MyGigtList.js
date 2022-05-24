@@ -2,22 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useGetGiftsQuery,
-  useDeleteGiftMutation
+  useDeleteGiftMutation,
 } from "../../services/giftApi";
 
 const MyGigtList = () => {
   const navigate = useNavigate();
-  const { data, isSuccess,refetch } = useGetGiftsQuery();
+  const { data, isSuccess, refetch } = useGetGiftsQuery();
+  const [deleteGift] = useDeleteGiftMutation();
 
-  const [deleteGift, deleteGiftActionResponse] = useDeleteGiftMutation();
 
-  const handleDeleteOneUser = (id) => {
+  const handleDeleteOneGift = (id) => {
     deleteGift(id);
-    refetch()
+    refetch();
   };
 
-  const handleEditUser = (id) => {
-    navigate(`/dashboard/${id}`);
+  const handleEditGift = (id) => {
+    navigate(`/editgift/${id}`);
   };
 
   return (
@@ -35,14 +35,14 @@ const MyGigtList = () => {
                     </div>
                     <div className="container">
                       <button
-                        onClick={() => handleDeleteOneUser(gift._id)}
+                        onClick={() => handleDeleteOneGift(gift._id)}
                         className="btn btn-warning mb-2"
                       >
                         Delete
                       </button>
                       <button
                         className="btn btn-primary mb-2 mx-2"
-                        onClick={() => handleEditUser(gift.id)}
+                        onClick={() => handleEditGift(gift._id)}
                       >
                         edit
                       </button>

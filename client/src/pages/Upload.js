@@ -2,11 +2,14 @@ import { useState, useCallback } from "react";
 import { Formik, Form, Field } from "formik";
 import Navbar from "../components/navbar";
 import { useDropzone } from "react-dropzone";
-import { useCreateGiftMutation } from "../services/giftApi";
+import { useCreateGiftMutation, useGetGiftsQuery } from "../services/giftApi";
+import { useNavigate } from "react-router-dom";
 
 function Upload() {
   const [image, setImage] = useState([]);
-  const [createGift, createGifActionResponse] = useCreateGiftMutation();
+  const [createGift] = useCreateGiftMutation();
+  const navigate = useNavigate();
+  const {  refetch } = useGetGiftsQuery();
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
@@ -29,7 +32,7 @@ function Upload() {
   });
 
   return (
-    <div>
+    <div className="bg-secondary vh-100">
       <Navbar />
       <div className="container  mt-5 pt-5 w-100">
         <Formik
@@ -39,11 +42,9 @@ function Upload() {
             user: "",
           }}
           onSubmit={(values, { setSubmitting }) => {
-            // console.log(values);
-            // setSubmitting(false);
-            // alert(JSON.stringify(values));
-            console.log(values);
-              createGift(values)
+            createGift(values);
+            navigate(`/mygifts`);
+            refetch();
           }}
         >
           {({ isSubmitting }) => (

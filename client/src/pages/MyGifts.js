@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 
 const MyGifts = () => {
   return (
-    <div>
+    <div className="bg-secondary">
       <Navbar />
       <MyGiftList />
     </div>
