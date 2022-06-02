@@ -5,13 +5,6 @@ import GiftCard from "../giftCard/GiftCard";
 const GiftList = ({keyword}) => {
   const [gifs, setGifs] = useState();
 
-  // useEffect(() => {
-  //   apiGiphy("rick").then((apiGifts) => {
-  //     console.log(apiGifts);
-  //     setGifs(apiGifts);
-  //   });
-  // }, []);
-
   useEffect(() => {
     apiGiphy(keyword).then((apiGifts) => {
       console.log(apiGifts);
