@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
@@ -36,22 +36,22 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <a className="navbar-brand mt-2 mt-lg-0" href="#">
+            <Link to="/" className="nav-link">
               <img
                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                 height="15"
                 alt="MDB Logo"
                 loading="lazy"
               />
-            </a>
+            </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/mygifts" className="nav-link text-warning">
+                <Link to="/register" className="nav-link text-warning">
                   Register
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/mygifts" className="nav-link text-warning">
+                <Link to="/login" className="nav-link text-warning">
                   Login
                 </Link>
               </li>
