@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { userSignOut } from "../../firebae/firebase";
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
+  const {user} = useAuth();
+
+  function handelSignOut() {
+    userSignOut();
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         {user ? (
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <Link to="/" className="nav-link">
+            <Link to="/home" className="nav-link">
               <img
                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                 height="15"
@@ -30,6 +37,15 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link to="/mygifts" className="nav-link text-warning">
                   my Gifts
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  onClick={handelSignOut}
+                  to="/"
+                  className="nav-link text-warning"
+                >
+                  Sign out
                 </Link>
               </li>
             </ul>

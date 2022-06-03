@@ -11,19 +11,23 @@ import MyGifts from "./pages/MyGifts";
 import EditGift from "./pages/EditGift";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/protectedRoutes";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/mygifts" element={<MyGifts />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/editgift/:id" element={<EditGift />} />
+          <Route path="/mygifts" element={<MyGifts />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
-        <Route path="/editgift/:id" element={<EditGift />} />
       </Routes>
     </AuthProvider>
   );

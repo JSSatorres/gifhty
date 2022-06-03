@@ -1,5 +1,7 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
+import {auth} from "../firebae/firebase"
+import { onAuthStateChanged } from "firebase/auth";
 
 //create the context
 export const AuthContext = createContext(null);
@@ -12,12 +14,20 @@ export const useAuth = () => {
 
 // the provider to consume the value which embraces the other components
 const AuthProvider = ({ children }) => {
-  const user = {
-    login: true,
-  };
+  const [user, setUser] = useState()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+      setLoading(false)
+      console.log(loading);
+      console.log(user);
+    })}, []);
+
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user,loading }}>{children}</AuthContext.Provider>
   );
 };
 

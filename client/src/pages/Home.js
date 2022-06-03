@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GiftList from "../components/giftList";
 import Input from "../components/input";
 import Navbar from "../components/navbar";
 import { useAuth } from "../context/AuthContext";
+// import { isCurrentUser } from "../firebae/firebase";
 
 const Home = () => {
   const [keyword, setKeyword] = useState();
-  const isUserLogin = useAuth();
+  const { user, loading } = useAuth();
 
-  console.log(isUserLogin);
+  console.log(user);
+  if (loading) return <h1> loading </h1>;
 
   function keywordSeacrh(newKeyword) {
     setKeyword(newKeyword);
