@@ -21,13 +21,13 @@ const MyGigtList = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row ">
+    <div className="container mt-5  ">
+      <div className="row">
         {isSuccess
           ? data.data.map((gift) => {
               return (
                 <div key={gift._id} className="col-md-8 mt-5">
-                  <div className="card my-2">
+                  <div className="card my-2 ">
                     <img src={gift.gift} alt="avatar" />
                     <div className="card-body">
                       <h5 className="card-title">{gift.title}</h5>

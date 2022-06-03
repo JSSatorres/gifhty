@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { userSignOut } from "../../firebae/firebase";
 
 const Navbar = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   function handelSignOut() {
     userSignOut();
@@ -12,10 +12,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div className="container-fluid">
+      <div className="container-fluid border-bottom border-warning">
         {user ? (
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <Link to="/home" className="nav-link">
+            <Link to="/" className="nav-link">
               <img
                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                 height="15"
@@ -30,25 +30,25 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/upload" className="nav-link text-warning">
+                <Link to="/upload" className="nav-link text-warning me-auto">
                   Upload
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/mygifts" className="nav-link text-warning">
+              <li className="nav-item ">
+                <Link to="/mygifts" className="nav-link text-warning ">
                   my Gifts
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  onClick={handelSignOut}
-                  to="/"
-                  className="nav-link text-warning"
-                >
-                  Sign out
-                </Link>
-              </li>
             </ul>
+            <div className="nav-item ms-auto">
+              <Link
+                onClick={handelSignOut}
+                to="/"
+                className="nav-link text-warning"
+              >
+                Sign out
+              </Link>
+            </div>
           </div>
         ) : (
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
