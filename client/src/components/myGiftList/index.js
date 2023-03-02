@@ -1,1 +1,1 @@
-export { default} from "./MyGigtList";
+export { default} from './MyGigtList'

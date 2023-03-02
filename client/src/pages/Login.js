@@ -74,7 +74,7 @@ const Login = () => {
                     </div>
                     <p className="small mb-3 pb-lg-2"><a className="text-warning-50" href="#!">Forgot password?</a></p>
                     <button 
-                      className="btn btn-outline-warning  btn-lg px-5" 
+                      className="btn btn-outline-warning  btn-md px-5" 
                       type="submit"
                       onMouseOver={(e) => {
                         e.target.style.color = '#000000'
