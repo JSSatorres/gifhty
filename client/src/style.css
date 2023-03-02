@@ -1,5 +1,8 @@
-*{ box-sizing: border-box !important;
+*{ box-sizing: border-box;
 }
 
-body { font-size: 20px;
+body { 
+  font-size: 14px;
+  height: 100vh;
+  background-color: rgb(108, 117, 125);
 }
