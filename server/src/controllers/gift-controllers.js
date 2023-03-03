@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { GiftDB } from "../models/gift-models.js";
+import { Gift } from "../models/gift-models.js";
 // import { uploadImagePlaylistCloud } from "../libs/cloudinary.js";
 
 export async function getGifts(req, res, next) {
   try {
-    const gifts = await GiftDB.find().lean().exec();
+    const gifts = await Gift.find().lean().exec();
     res.status(200).send({
       data: gifts,
     });
@@ -16,7 +16,7 @@ export async function getGifts(req, res, next) {
 export async function getGift(req, res, next) {
   const { id } = req.params;
   try {
-    const giftToSearch = await GiftDB.find({ _id: id })
+    const giftToSearch = await Gift.find({ _id: id })
       // .populate("songs", { songData: 1, songFile: 1, songImage: 1 })
       .lean()
       .exec();
@@ -28,12 +28,11 @@ export async function getGift(req, res, next) {
 }
 
 export async function createGift(req, res) {
-  const { title, gift, user } = req.body;
+  const { title, url } = req.body;
   try {
-    const newGifts = await GiftDB.create({
+    const newGifts = await Gift.create({
       title,
-      gift,
-      user,
+      url
     });
     res.status(200).send({
       message: "OK create",
@@ -44,18 +43,17 @@ export async function createGift(req, res) {
 }
 
 export async function updateGift(req, res, next) {
-  const {title, gift, user } = req.body.values;
+  const {title,  url } = req.body.values;
   const { id } = req.params;
   // const { uid } = req.user;
   try {
 
-      await GiftDB.findOneAndUpdate(
+      await Gift.findOneAndUpdate(
         { _id: id },
         {
           $set: {
             title,
-            gift,
-            user,
+            url
           },
         },
         { new: true }
@@ -71,7 +69,7 @@ export async function removeGift(req, res, next) {
   const { id } = req.params;
 
   try {
-    const gitsRemove = await GiftDB.findByIdAndDelete(id, { new: true })
+    const gitsRemove = await Gift.findByIdAndDelete(id, { new: true })
       .lean()
       .exec();
     console.log(id);
