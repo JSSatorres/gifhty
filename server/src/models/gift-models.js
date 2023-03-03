@@ -7,14 +7,14 @@ const GiftSchema = new Schema(
       type: String,
       trim: true,
     },
-    gift: {
+    url: {
       type: String,
       trim: true,
     },
-    user: {
-      type: String,
-      trim: true,
-    },
+    // gift: {
+    //   type: String,
+    //   trim: true,
+    // },
     //   users: {
     //     type: [{ type: Schema.Types.ObjectId, ref: "users" }],
     //     default: [],
@@ -23,4 +23,4 @@ const GiftSchema = new Schema(
   { timestamps: true }
 );
 
-export const GiftDB = new model("gift", GiftSchema);
+export const Gift = new model("gift", GiftSchema);
