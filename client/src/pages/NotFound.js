@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 const NotFound = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center" id="main">
+    <div className="h-100 d-flex justify-content-center align-items-center" id="main">
       <h1 className="mr-3 pr-3 align-top border-right inline-block align-content-center">
         404
       </h1>
@@ -12,7 +12,7 @@ const NotFound = () => {
         </h2>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound
