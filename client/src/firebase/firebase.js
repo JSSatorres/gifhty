@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app'
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -11,7 +12,7 @@ import {
   // updatePassword,
   // reauthenticateWithCredential,
   // EmailAuthProvider,
-} from "firebase/auth";
+} from 'firebase/auth'
 
 // Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,24 +26,25 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
   appId: process.env.REACT_APP_APPID,
   measurementId:process.env.REACT_APP_MEASUREMENTID,
-};
+}
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
-export const auth = getAuth(app);
+export const auth = getAuth(app)
 
 
 export async function singInWithEmailAndPassword(email, password) {
-  await signInWithEmailAndPassword(auth, email, password);
+  await signInWithEmailAndPassword(auth, email, password)
 }
 
-export async function singUpWithEmailAndPassword(email, password) {
-  await createUserWithEmailAndPassword(auth, email, password);
+export async function singUpWithEmailAndPassword(userName, email, password) {
+  console.log(userName, email, password)
+  await createUserWithEmailAndPassword(auth, email, password)
 }
 
 export async function userSignOut() {
-  return await signOut(auth);
+  return await signOut(auth)
 }
 // export function singInWithGoogle() {
 //   const Provider = new GoogleAuthProvider();
