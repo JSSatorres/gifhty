@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const Input = ({keywordSeacrh}) => {
   const [inputValue, setInputValue] = useState()
 
   const handleSubmitKeyword = (e) => {
     keywordSeacrh(inputValue)
-  };
+  }
 
   const handleChange = (e) => {
-    console.log(inputValue);
-    setInputValue(e.target.value);
-  };
+    console.log(inputValue)
+    setInputValue(e.target.value)
+  }
 
   return (
     <div className="input-group mb-3 mt-5 pt-4 w-50 m-auto">
@@ -28,7 +28,7 @@ const Input = ({keywordSeacrh}) => {
         onChange={(e) => handleChange(e)}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
