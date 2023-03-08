@@ -1,42 +1,42 @@
-import { Field, Form, Formik } from "formik";
-import React, { useState, useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/navbar";
+import { Field, Form, Formik } from 'formik'
+import React, { useState, useCallback } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import Navbar from '../components/navbar'
 import {
   useGetGiftQuery,
   useGetGiftsQuery,
   useUpdateGiftMutation,
-} from "../services/giftApi";
-import { useDropzone } from "react-dropzone";
+} from '../services/giftApi'
+import { useDropzone } from 'react-dropzone'
 
 const EditGift = () => {
-  const navigate = useNavigate();
-  const paramsId = useParams();
-  const { id } = paramsId;
-  const { data } = useGetGiftQuery(id);
-  const { refetch } = useGetGiftsQuery();
-  const [image, setImage] = useState([]);
-  const [updateGift,] = useUpdateGiftMutation();
+  const navigate = useNavigate()
+  const paramsId = useParams()
+  const { id } = paramsId
+  const { data } = useGetGiftQuery(id)
+  const { refetch } = useGetGiftsQuery()
+  const [image, setImage] = useState([])
+  const [updateGift,] = useUpdateGiftMutation()
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = () => {
-        setImage((prevState) => [...prevState, reader.result]);
-      };
-      reader.readAsDataURL(file);
-      console.log("el reader", reader);
-    });
+        setImage((prevState) => [...prevState, reader.result])
+      }
+      reader.readAsDataURL(file)
+      console.log('el reader', reader)
+    })
 
-    console.log("acceptedFiles", acceptedFiles);
-    console.log("rejectFiles", rejectFiles);
-  }, []);
+    console.log('acceptedFiles', acceptedFiles)
+    console.log('rejectFiles', rejectFiles)
+  }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".png", ".gif"],
+      'image/*': ['.jpeg', '.png', '.gif'],
     },
-  });
+  })
 
   return (
     <>
@@ -49,9 +49,9 @@ const EditGift = () => {
             user: data?.giftToSearch[0].user,
           }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
-            updateGift({ id,values });
-            navigate(`/mygifts`)
+            console.log(values)
+            updateGift({ id,values })
+            navigate('/mygifts')
             refetch()
           }}
           enableReinitialize
@@ -86,7 +86,7 @@ const EditGift = () => {
                         placeholder="as"
                         {...getInputProps()}
                       />
-                      {isDragActive ? "Drag active" : "You can drop your files"}
+                      {isDragActive ? 'Drag active' : 'You can drop your files'}
                     </div>
                     <div className="d-flex justify-content-center">
                       <button
@@ -104,7 +104,7 @@ const EditGift = () => {
         </Formik>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default EditGift;
+export default EditGift
