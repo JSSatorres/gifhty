@@ -1,16 +1,20 @@
 export default function apiGiphy(keyword) {
-  const api_key = "ecb7oWws7gW6rshkvIiNRrxydHrTK6WT&q";
-  const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}=${keyword}&limit=24&offset=0&rating=g&lang=en`;
+  // eslint-disable-next-line no-undef
+  const api_key = process.env.REACT_APP_API_KEY_GIFT
+  const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}=${keyword}&limit=24&offset=0&rating=g&lang=en`
 
   return fetch(apiUrl)
     .then((res) => res.json())
     .then((response) => {
-      const { data } = response;
-      const apiGifts = data.map((image) => {
-        const { images, title, id } = image;
-        const { url } = images.downsized_medium;
-        return { title, id, url };
-      });
-      return apiGifts;
-    });
+      const { data } = response
+      const apiGifts = data.map((gift) => {
+        const { images, title, id } = gift
+        const { url } = images.downsized_medium
+        return { title, id, url }
+      })
+      return apiGifts
+    })
+    .catch((error)=>{
+      throw new Error(error)
+    })
 }
