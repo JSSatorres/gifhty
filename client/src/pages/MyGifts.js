@@ -1,6 +1,6 @@
-import React from "react";
-import MyGiftList from "../components/myGiftList";
-import Navbar from "../components/navbar";
+import React from 'react'
+import MyGiftList from '../components/myGiftList'
+import Navbar from '../components/navbar'
 
 const MyGifts = () => {
   return (
@@ -8,7 +8,7 @@ const MyGifts = () => {
       <Navbar />
       <MyGiftList />
     </div>
-  );
-};
+  )
+}
 
-export default MyGifts;
+export default MyGifts
