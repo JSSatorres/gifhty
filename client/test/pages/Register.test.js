@@ -10,7 +10,7 @@ describe('When user fills in and submits form', () => {
     render(<Register submit={submit} />)
 
     const title = screen.getByLabelText(/title/i)
-    userEvent.type(title, 'My awesome post')
+    userEvent.type(title, 'Register')
 
     const content = screen.getByLabelText(/content/i)
     userEvent.type(content, 'Lorem ipsum dolor sit amet')
