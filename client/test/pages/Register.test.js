@@ -2,12 +2,12 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Login from '../../src/pages/Login'
+import Register from '../../src/pages/Register'
 
 describe('When user fills in and submits form', () => {
   it('submit method is called with title and content', () => {
     const submit = jest.fn()
-    render(<Login submit={submit} />)
+    render(<Register submit={submit} />)
 
     const title = screen.getByLabelText(/title/i)
     userEvent.type(title, 'My awesome post')
