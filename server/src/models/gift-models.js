@@ -6,10 +6,12 @@ const GiftSchema = new Schema(
     title: {
       type: String,
       trim: true,
+      uppercase: true,
     },
     url: {
       type: String,
       trim: true,
+      lowercase: true,
     },
     // gift: {
     //   type: String,
