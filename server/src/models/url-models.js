@@ -6,7 +6,7 @@ const UrlSchema = new Schema(
     url: {
       type: String,
       trim: true,
-      uppercase: true, // Convierte los valores de cadena en mayúsculas.
+      lowercase: true, // Convierte los valores de cadena en mayúsculas.
       required: [true, "The url is required"],
       index: true, // Crea un índice para el campo.
     },
