@@ -6,6 +6,7 @@ const UrlSchema = new Schema(
     url: {
       type: String,
       trim: true,
+      required: [true, "The url is required"],
     },
 
   },
