@@ -2,7 +2,9 @@
 
 # Gifty
 
-Gifty is a monorepo project that contains both a back-end and front-end. It is built with React, Redux, Bootstrap, Firebase, Formik, Node, Express and Mongoose. 
+Gifty is a monorepo project that contains both a back-end and front-end. 
+front-end is built with React, Redux, Bootstrap, Firebase and Formik.
+back-end is built Node, Express, Mongoose and MongoDb . 
 
 ## Features 
 * User authentication with Firebase 
