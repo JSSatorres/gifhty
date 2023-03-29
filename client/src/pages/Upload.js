@@ -54,7 +54,6 @@ function Upload() {
           <div className='row d-flex justify-content-center align-items-center h-100'>          
             <form className="col-12 col-md-8 col-lg-6 col-xl-5 mt-5" onSubmit={handleSubmit}>
               <div className="card bg-dark text-warning" style={{ borderRadius: '1rem' }}>
-                <h1 className='mb-5'>jiji</h1>
                 <div className="card-body px-5  text-center">
                   <div className="mb-md-3 mt-md-2 pb-3">
                     <p className="text-warning-50 mb-3">
