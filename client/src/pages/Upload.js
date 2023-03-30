@@ -57,7 +57,7 @@ function Upload() {
                 <div className="card-body px-5  text-center">
                   <div className="mb-md-3 mt-md-2 pb-3">
                     <p className="text-warning-50 mb-3">
-                      Enter url and title of the gift to be uploaded
+                      Enter url and title of the gift to be uploaded!!
                     </p>
                     <div className="form-outline form-white mb-3">
                       <label className="form-label text-warning" htmlFor="typeEmailX">Title</label>
