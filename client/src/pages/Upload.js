@@ -4,7 +4,7 @@ import Navbar from '../components/navbar'
 import { useDropzone } from 'react-dropzone'
 import { useCreateGiftMutation, useGetGiftsQuery } from '../services/giftApi'
 import { Link, useNavigate } from 'react-router-dom'
-import uploadSchema from './yupSchemas/UploadSchema copy'
+// import uploadSchema from './yupSchemas/UploadSchema'
 
 function Upload() {
   const [image, setImage] = useState([])
@@ -38,7 +38,7 @@ function Upload() {
     <section className='container-fluid py-4 h-100 bg-secondary'>
       <Formik
         initialValues={{ title: '', url: ''}}
-        validationSchema={uploadSchema}
+        // validationSchema={uploadSchema}
         onSubmit={(values) => {
           handleSubmit(values)
         }}
