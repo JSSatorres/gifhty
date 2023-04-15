@@ -2,6 +2,12 @@
   "name": "gifty",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "jest"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
@@ -24,12 +30,7 @@
     "web-vitals": "^2.1.4",
     "yup": "^1.0.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "jest"
-  },
+
   "eslintConfig": {
     "extends": [
       "react-app",
