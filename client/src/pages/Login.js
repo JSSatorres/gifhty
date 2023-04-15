@@ -3,6 +3,7 @@ import { Formik } from 'formik'
 import { singInWithEmailAndPassword } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import loginSchema from './yupSchemas/loginSchema'
+import UiButton from '../components/ui/UiButton'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -73,20 +74,7 @@ const Login = () => {
                         : null}
                     </div>
                     <p className="small mb-3 pb-lg-2"><a className="text-warning-50" href="#!">Forgot password?</a></p>
-                    <button 
-                      className="btn btn-outline-warning  btn-md px-5" 
-                      type="submit"
-                      onMouseOver={(e) => {
-                        e.target.style.color = '#000000'
-                        e.target.style.backgroundColor = '#c79100'
-                      }}
-                      onMouseOut={(e) => {
-                        e.target.style.color = '#ffc107'
-                        e.target.style.backgroundColor = 'transparent'
-                      }}
-                    >
-                      Login
-                    </button>
+                    <UiButton>Login</UiButton>
                   </div>
                   <div>
                     <p className="mb-0">Do not have an account? 
