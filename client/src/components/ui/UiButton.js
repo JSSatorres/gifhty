@@ -1,13 +1,13 @@
 import React from 'react'
 
-const UiButton = ({titlte, func}) => {
+const UiButton = ({ func,children}) => {
   const handleClick = (e) =>{
     func(e)
   }
   return (
     <button 
       onClick={(e)=>handleClick(e)}
-      className="btn btn-outline-warning  btn-md px-5" 
+      className="btn btn-outline-warning  btn-md px-5 mx-2" 
       type="submit"
       onMouseOver={(e) => {
         e.target.style.color = '#000000'
@@ -18,7 +18,7 @@ const UiButton = ({titlte, func}) => {
         e.target.style.backgroundColor = 'transparent'
       }}
     >
-      {titlte}
+      {children}
     </button>
   )
 }
