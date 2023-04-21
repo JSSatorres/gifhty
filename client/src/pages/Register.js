@@ -1,26 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import { singUpWithEmailAndPassword } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import registerSchema from './yupSchemas/registerSchema'
+import { useCreateUserMutation } from '../services/userApi'
+import { fetchProvinces } from '../utils/fetchLocations'
 
 const Register = () => {
   const navigate = useNavigate()
+  const [locations, setLocations] = useState([])
+  const [createUser] = useCreateUserMutation()
 
-  const submitForm = async ({userName, email, password }) => {
+  useEffect(() => {
+    setLocations(fetchProvinces())
+    console.log(locations)
+  }, [])
+  const submitForm = async (values) => {
+
+    const { userName, email, password ,postalCode,province, location} = values
     try {
       await singUpWithEmailAndPassword(userName, email, password )
-      console.log('el del form', userName, email, password )
+      await createUser({ userName, email, password ,postalCode,province, location})
       navigate('/')
     } catch (error) {
       throw  new Error(error)
     }
-  }
+  }  
 
   return (
     <section className='container-fluid py-4 h-100 bg-secondary'>
       <Formik
-        initialValues={{ userName: '', email: '', password: '' }}
+        initialValues={{ userName: '', email: '', password: '' ,postalCode:'',province:'', location:''}}
         validationSchema={registerSchema}
         onSubmit={(values) => {
           submitForm(values)
@@ -87,6 +97,56 @@ const Register = () => {
                       />
                       {errors.password && touched.password && errors.password
                         ? <div className='text-danger mt-2'>{errors.password}</div>
+                        : null}
+                    </div>
+                    <div className="row">
+                      <div className="col form-outline form-white mb-4">
+                        <label className="form-label text-warning" htmlFor="typePostalCode">Postal Code</label>
+                        <input
+                          type="number"
+                          id="typePostalCode"
+                          className="form-control form-control-lg bg-secondary  btn-outline-warning"
+                          name='postalCode'
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.postalCode}
+                          placeholder='name@company.com'
+                        />
+                        {errors.postalCode && touched.postalCode && errors.postalCode
+                          ? <div className='text-danger mt-2'>{errors.postalCode}</div>
+                          : null}
+                      </div>
+                      <div className="col form-outline form-white mb-4">
+                        <label className="form-label text-warning" htmlFor="typeProvince">Province</label>
+                        <input
+                          type="province"
+                          id="typeProvince"
+                          className="form-control form-control-lg bg-secondary  btn-outline-warning"
+                          name='province'
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.province}
+                          placeholder='name@company.com'
+                        />
+                        {errors.province && touched.province && errors.province
+                          ? <div className='text-danger mt-2'>{errors.province}</div>
+                          : null}
+                      </div>
+                    </div>
+                    <div className="form-outline form-white mb-4">
+                      <label className="form-label text-warning" htmlFor="typeLocality">Locality</label>
+                      <input
+                        type="locality"
+                        id="typeLocality"
+                        className="form-control form-control-lg bg-secondary  btn-outline-warning"
+                        name='locality'
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.locality}
+                        placeholder='name@company.com'
+                      />
+                      {errors.locality && touched.locality && errors.locality
+                        ? <div className='text-danger mt-2'>{errors.locality}</div>
                         : null}
                     </div>
                     <button 
