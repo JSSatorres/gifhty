@@ -31,8 +31,27 @@ function Upload() {
     accept:''
   })
   const handleSubmit  =  (values) => {
-    console.log(values,image)
-    createGift(values,image)
+    // console.log(values,image)
+    // createGift(values,image)
+    const data = {
+      userName: 'JohnDoe',
+      email: 'johndoe@example.com',
+      password: '123456',
+      postalCode: '12345',
+      province: 'Ontario',
+      address: '123 Main St'
+    }
+    
+    fetch('http://localhost:4000/gift', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error))
   }
   return (
     <section className='container-fluid py-4 h-100 bg-secondary'>
