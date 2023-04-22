@@ -9,18 +9,18 @@ describe('When user fills in and submits form', () => {
     const submit = jest.fn()
     render(<Login submit={submit} />)
 
-    const title = screen.getByLabelText(/title/i)
-    userEvent.type(title, 'My awesome post')
+    const email = screen.getByLabelText(/email/i)
+    userEvent.type(email, 'pepe@admin.es')
 
-    const content = screen.getByLabelText(/content/i)
-    userEvent.type(content, 'Lorem ipsum dolor sit amet')
+    const password = screen.getByLabelText(/content/i)
+    userEvent.type(password, 'Pepe12')
 
-    const button = screen.getByRole('button', { name: /submit/i })
+    const button = screen.getByRole('button', { name: /login/i })
     userEvent.click(button)
 
     expect(submit).toHaveBeenCalledWith({
-      title: 'My awesome post',
-      content: 'Lorem ipsum dolor sit amet',
+      email: 'pepe@admin.es',
+      password: 'Pepe12',
     })
   })
 })
