@@ -9,7 +9,14 @@ export const userApi = createApi({
       query: () => '/users',
     }),
     getUser: builder.query({
-      query: (uid) => `/user/${uid}`,
+      query: (uid) => `/users/${uid}`,
+    }),
+    createUser:builder.mutation({
+      query:(body)=>({
+        url:'/users',
+        method:'POST',
+        body
+      })
     }),
     updateUser:builder.mutation({
       query:({uid, ...patch})=>({
@@ -23,4 +30,4 @@ export const userApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUsersQuery, useGetUserQuery, useUpdateUserMutation } = userApi
+export const { useGetUsersQuery, useGetUserQuery,useCreateUserMutation, useUpdateUserMutation } = userApi
