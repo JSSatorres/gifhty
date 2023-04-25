@@ -5,10 +5,10 @@ import { User } from "../models/user-model.js";
 export async function getUsers(req, res, next) {
   try {
     const users = await User.find({})
-      .select({
-        firstName: 1,
-        lastName: 1,
-      })
+      // .select({
+      //   firstName: 1,
+      //   lastName: 1,
+      // })
       .limit(10)
       .lean()
       .exec();
@@ -20,7 +20,7 @@ export async function getUsers(req, res, next) {
     next(error);
   }
 }
-export async function getUserDetails(req, res, next) {
+export async function getUser(req, res, next) {
   const { userId } = req.params;
 
   try {
@@ -38,24 +38,23 @@ export async function getUserDetails(req, res, next) {
     next(error);
   }
 }
-export async function createUser(req, res, next) {
-  const { firstName, lastName, email, password, speaks } = req.body;
+export async function createUser (req, res, next) {
+  const { userName, email, password, postalCode, province, location } = req.body;
   try {
     const user = await User.create({
-      firstName,
-      lastName,
+      userName,
       email,
       password,
-      speaks,
+      postalCode,
+      province,
+      location,
     });
+
 
     res.status(200).send({
       data: {
         _id: user.uid,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        speaks: user.speaks,
+        ...user
       },
     });
   } catch (error) {
