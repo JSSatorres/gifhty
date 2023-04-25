@@ -29,6 +29,7 @@ export async function getGift(req, res, next) {
 
 export async function createGift(req, res) {
   const { title, url } = req.body;
+  console.log(title, url);
   try {
     const newGifts = await Gift.create({
       title,
