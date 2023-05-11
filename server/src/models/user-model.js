@@ -6,10 +6,10 @@ const { isEmail } = validator;
 
 const UserSchema = new Schema(
   {
-    _id: String,
-
     userName: {
       type: String,
+      required: [true, "The username is required"],
+      min: [4, 'please enter more than 4 characters'],
       trim: true,
     },
     email: {
@@ -22,12 +22,29 @@ const UserSchema = new Schema(
         message: (props) => `The email ${props.value} is not valid`,
       },
     },
+    postalCode: {
+      type: Number,
+      required: [true, "The postal code is required"],
+      trim: true,
+      validate: {
+        validator: (value) => value.toString().length === 5,
+        message: (props) => `The postal code ${props.value} should be 5 number`,
+      },
+    },
+    province: {
+      type: String,
+      trim: true,
+    },
+    location: {
+      type: String,
+      trim: true,
+    },
     image: {
       url: String,
       public_id: String,
     },
-    myFavoriteSongs: {
-      type: [{ type: Schema.Types.ObjectId, ref: "songs" }],
+    myFavoriteGift: {
+      type: [{ type: Schema.Types.ObjectId, ref: "gift" }],
       default: [],
     },
   },
