@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { singInWithEmailAndPassword } from '../firebase/firebase'
+import { signInWithEmailAndPasswordFun } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import loginSchema from './yupSchemas/loginSchema'
 import UiButton from '../components/ui/UiButton'
@@ -10,7 +10,7 @@ const Login = () => {
 
   const submitForm = async ({ email, password }) => {
     try {
-      await singInWithEmailAndPassword( email, password )
+      await signInWithEmailAndPasswordFun( email, password )
       navigate('/')
     } catch (error) {
       throw  new Error(error)
@@ -45,7 +45,7 @@ const Login = () => {
                       <label className="form-label text-warning" htmlFor="typeEmailX">Email</label>
                       <input
                         type="email"
-                        id="typeEmailX"
+                        data-testid="typeEmailX"
                         className="form-control form-control-lg bg-secondary  btn-outline-warning"
                         name='email'
                         onChange={handleChange}
@@ -61,7 +61,7 @@ const Login = () => {
                       <label className="form-label text-warning" htmlFor="typePasswordX">Password</label>
                       <input
                         type="password"
-                        id="typePasswordX"
+                        data-testid="typePasswordX"
                         className="form-control form-control-lg bg-secondary  btn-outline-warning"
                         name='password'
                         onChange={handleChange}
