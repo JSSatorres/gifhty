@@ -23,7 +23,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
             <Route path="profile" element={<Profile />} />
-            <Route path="profile" element={<Profile />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/editgift/:id" element={<EditGift />} />
             <Route path="/mygifts" element={<MyGifts />} />
