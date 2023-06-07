@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
-import { singUpWithEmailAndPassword } from '../firebase/firebase'
+import { signUpWithEmailAndPassword } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import registerSchema from './yupSchemas/registerSchema'
 import { useCreateUserMutation } from '../services/userApi'
@@ -19,7 +19,7 @@ const Register = () => {
 
     const { userName, email, password ,postalCode,province, location} = values
     try {
-      await singUpWithEmailAndPassword(userName, email, password )
+      await signUpWithEmailAndPassword(userName, email, password )
       await createUser({ userName, email, password ,postalCode,province, location})
       navigate('/')
     } catch (error) {
