@@ -1,0 +1,9 @@
+.background-transition {
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  background-color: #343a40;
+}
+
+.background-transition:hover {
+  background-color: #ffc107;
+  transform: scale(1.03);
+}
