@@ -10,7 +10,47 @@ const Register = () => {
   const navigate = useNavigate()
   const [locations, setLocations] = useState([])
   const [createUser] = useCreateUserMutation()
-
+  const dummyData = []
+  const rowContent = [
+    {
+      title: 'PERSONS',
+      sortable: true,
+    },
+    {
+      title: 'RELATIONSHIP_PJ',
+    },
+    {
+      title: 'STATE',
+      caso: 'pep',
+    },
+    {
+      title: 'DATA_ORIGIN',
+    },
+    {
+      title: 'ACTION',
+    },
+  ]
+  const columns = rowContent.map((item, index) => {
+    console.log('--------',Object.keys(item))
+    const transformedItem = Object.keys(item).reduce(
+      (acc, key) => {
+        if (item[key]) {
+          console.log('---acc--',acc) 
+          console.log('---acc[key}--',acc[key]) 
+          console.log(item[key]) 
+          acc[key] = item[key]
+        }
+        return acc
+      },
+      { title: item.title }
+    )
+    return {
+      id: index + 1,
+      ...transformedItem,
+      cell: row => row.rowElement ,
+    }
+  })
+  console.log(columns)
   useEffect(() => {
     setLocations(fetchProvinces())
     console.log(locations)
