@@ -34,11 +34,11 @@ const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 
 
-export async function singInWithEmailAndPassword(email, password) {
+export async function signInWithEmailAndPasswordFun(email, password) {
   await signInWithEmailAndPassword(auth, email, password)
 }
 
-export async function singUpWithEmailAndPassword(userName, email, password) {
+export async function signUpWithEmailAndPassword(userName, email, password) {
   console.log(userName, email, password)
   await createUserWithEmailAndPassword(auth, email, password)
 }
