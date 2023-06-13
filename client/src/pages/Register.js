@@ -35,8 +35,8 @@ const Register = () => {
     const transformedItem = Object.keys(item).reduce(
       (acc, key) => {
         if (item[key]) {
-          console.log('---acc--',acc) 
-          console.log('---acc[key}--',acc[key]) 
+          // console.log('---acc--',acc) 
+          // console.log('---acc[key}--',acc[key]) 
           console.log(item[key]) 
           acc[key] = item[key]
         }
