@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import { Formik } from 'formik'
-import Navbar from '../components/navbar'
+// import Navbar from '../components/navbar'
 import { useDropzone } from 'react-dropzone'
 import { useCreateGiftMutation, useGetGiftsQuery } from '../services/giftApi'
-import { Link, useNavigate } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 // import uploadSchema from './yupSchemas/UploadSchema'
 
 function Upload() {
